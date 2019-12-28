@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700,900" rel="stylesheet">
         <!-- https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900  original fonts-->
 
         <!-- Look into icon fonts -->
@@ -13,28 +13,320 @@
         <link rel="shortcut icon" type="image/png" href="img/my_website_images/iconmonstr-tree-16-240.png">
 
         <title>Augustas Personal Website</title>
+
+<!-- script below closes the navigation pane once any of the links is clicked -->
+        <script>
+          function closeNav() {
+            document.getElementById("navi-toggle").checked = false;
+          }
+        </script>
     </head>
+
+
     <body>
 
+  <div class="navigation">
+
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+    <!-- need id attrib we will need to connect this to the label, first ingredient for checkbox hack.  as we hit the label - checkbox will be checked.-->
+        <label for="navi-toggle" class="navigation__button">
+          <span class="navigation__icon">&nbsp;</span>
+        </label>
+
+
+        <!-- need background so on top of it we can put navigation itself. &nbsp; is for whitespace. -->
+        <div class="navigation__background">&nbsp;</div>
+
+        <nav class="navigation__nav">
+      <!-- container for navigation element - unordered list, so we can later on center it vert + hariz.
+      href points to destinations, onclick calls the function to close nav pane once a user clicks on a link. -->
+          <ul class="navigation__list">
+            <li class="navigation__item"><a href="#about-btn-destination" class="navigation__link" onclick="closeNav()">About Me</a></li>
+
+            <li class="navigation__item"><a href="#specialise-btn-destination" class="navigation__link" onclick="closeNav()">Where will I specialise</a></li>
+
+            <li class="navigation__item"><a href="learn_more.html#" class="navigation__link" onclick="closeNav()">My Story</a></li>
+
+            <li class="navigation__item"><a href="#" class="navigation__link" onclick="closeNav()">Contact</a></li>
+
+          </ul>
+    </nav>
+
+  </div>
+
       <header class="header">
-        <div class="logo-box">
+        <div class="header__logo-box">
           <!-- first a div, then image inside the div. Since image is an inline
            element so it is better practice to first have a small container to store it
            and adjust it's positioning within the container. -->
-            <img src="img/my_website_images/iconmonstr-tree-white-16-240.png" alt="logo" class="logo">
+            <img src="img/my_website_images/iconmonstr-tree-white-16-240.png" alt="logo" class="header__logo">
         </div>
 
-        <div class="text-box">
+        <div class="header__text-box">
           <!-- we want an h1 heading that has children with different font properties-->
           <h1 class="heading-primary">
-            <span class="heading-primary-main">Augustas.J</span>
-            <span class="heading-primary-sub">A Personal Website</span>
+            <span class="heading-primary--main">Augustas.J</span>
+            <span class="heading-primary--sub">A Personal Website</span>
           </h1>
+
+          <a href="#about-btn-destination" class="btn btn--white btn--animated">About Me</a>
+
+        <!-- class btn marks button as a standalone component that can be re-used.
+        class btn--white is a modifier used to assign colour to standalone component btn - essentially to make a different
+        version of this component.
+         -->
+
+        </div>
+      </header>
+
+<!-- we will use a custom grid - small fluid grid
+as styled in _grid.scss. This will be based on float layout - old but reliable way of building grids
+alternatives:
+flexbox - 1dimensional row layou out
+css grid - fully fledged 2dimensional css grid-->
+
+      <main>
+        <section id="about-btn-destination" class="section-about">
+          <!-- a utility - wrapper for centering -->
+          <div class="u-center-text u-margin-bottom-big">
+            <h2 class="heading-secondary">
+              From Forestry to Programming
+            </h2>
+          </div>
+
+          <div class="row">
+             <!-- row - a container for columns -->
+            <!-- gonna use a segment of our custom grid -->
+            <div class="col-1-of-2">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                  Start of career 2010
+                </h3>
+                  <p class="paragraph">
+                    I started my career as a BSc Forestry student at the University of Aberdeen in 2010, and then progressed to forest manager's role which I kept till late 2019. Throughout this journey I found it fascinating how information technologies are utilised in the field of natural resources management. My early encounters with programming contributed to this fascination, specifically, through automating excel spreadsheets, designing and managing geo-spatial databases, conducting spatial analysis on forestry data, and producing maps to support work programmes and/or forest management plans. I soon realised that virtually everything in this world can be represented as some form of data, and our ability to work with it, ask questions, and find direction is priceless in the quest of making the Spaceship Earth a more pleasant experience for humans and orther species we get to co-exist with.
+                  </p>
+
+                  <h3 class="heading-tertiary u-margin-bottom-small">
+                    Future aspirations 2020
+                  </h3>
+                    <p class="paragraph">
+                      I see my future self as a pragmatic programmer, equipped with in-depth knowledge of languages including but not limited to Python, Ruby, Visual Basic, JavaScript, Java, C#, HTML5, CSS3 and PHP. To me, client-side and server-side programming are equally important in  modern application development, hence my determination to become a fully-fledged full stack developer.
+                    </p>
+
+                  <a href="learn_more.html" class="btn-text">Learn more &rarr;</a>
+                  <ion-icon name="heart"></ion-icon>
+
+            </div>
+
+            <div class="col-1-of-2">
+              <!-- we will create a composition component for storing three img each with different modifier class: shorcut in emmet:
+             (.composition>img.composition__photo.composition__photop1 and tab. photos to be positioned using absolute positioning-->
+
+              <div class="composition">
+
+                <img src="img/my_website_images/programming.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+
+                <img src="img/my_website_images/forest_map.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
+
+                <img src="img/my_website_images/data.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
+            </div>
+
+          </div>
+        </section>
+
+
+
+        <section class="section-features">
+
+          <div class="u-center-text u-margin-bottom-big">
+
+            <h2 id="specialise-btn-destination" class="heading-secondary">
+              Where will i specialise
+            </h2>
+          </div>
+
+          <div class="row">
+            <div class="col-1-of-4">
+              <!-- feature-box will be a component that cam be re-used throughout the page -->
+                <div class="feature-box">
+                  <img src="img/my_website_images/location-point.png" alt="" class="feature-box__icon">
+                  <h3 class="heading-tertiary u-margin-bottom-small">
+                    GIS programming
+                  </h3>
+                  <ul class="feature-box__list">
+                    <li class="feature-box__item">QGIS & ArcGIS automation - Python</li>
+                    <li class="feature-box__item">Web GIS - Java Script</li>
+                    <li class="feature-box__item">Geospatial databases - SQL</li>
+                    <li class="feature-box__item">Map servers - Java</li>
+                    <li class="feature-box__item">Desktop GIS - C++/C/C#</li>
+                  </ul>
+
+                  <!-- <p class="feature-box__text">Lorem ipsum dolor sit amet, consectetur adipishesicing  heart elit. Doloremque reprehenderit lorem skooo Du too small.</p> -->
+                </div>
+            </div>
+
+            <div class="col-1-of-4">
+              <div class="feature-box">
+                <img src="img/my_website_images/web-development.png" alt="" class="feature-box__icon">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                  WEB-design and development
+                </h3>
+
+                <ul class="feature-box__list">
+                  <li class="feature-box__item">Front end - HTML5, CSS3, JavaScript</li>
+                  <li class="feature-box__item">Server side - Java, JavaScript, PHP.</li>
+                  <li class="feature-box__item">Misc - Ruby, Sinatra, SQL</li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div class="col-1-of-4">
+              <div class="feature-box">
+                <img src="img/my_website_images/database.png" alt="" class="feature-box__icon">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                  Database design and management
+                </h3>
+                <ul class="feature-box__list">
+                  <li class="feature-box__item">Relational - Postgres, MySQL, Microsoft SQL Server, Oracle. </li>
+                  <li class="feature-box__item">Non-Relational - MongoDB</li>
+                  <li class="feature-box__item">Design, creation, querrying.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-1-of-4">
+              <div class="feature-box">
+                <img src="img/my_website_images/excel.png" alt="" class="feature-box__icon">
+                <h3 class="heading-tertiary u-margin-bottom-small">
+                  Excel programming
+                </h3>
+                <ul class="feature-box__list">
+                  <li class="feature-box__item">Automation and spreadsheet design - VBA Macros. </li>
+                  <li class="feature-box__item">Excel and GIS partnership - VBA Macros, Python, File Databases, Spatial-SQL.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+
+      <footer class="footer">
+        <div class="footer__logo-box">
+          <img src="img/my_website_images/iconmonstr-tree-white-16-240.png" alt="logo" class="footer__logo">
         </div>
 
 
-      </header>
+        <div class="row">
+          <div class="col-1-of-2">
+            <div class="footer__navigation">
+              <ul class="footer__list">
+                <li class="footer__item"><a href="index.html#about-btn-destination" class="footer__link">About me</a></li>
+
+                <li class="footer__item"><a href="index.html#specialise-btn-destination" class="footer__link">Where will I specialise</a></li>
+                <!-- <li class="footer__item"><a href="" class="footer__link">Careers</a></li> -->
+                <li class="footer__item"><a href="" class="footer__link">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-1-of-2">
+              <p class="footer__copyright">
+                 A demo website built by <a href="">Augustas J</a> as part of CodeClan pre-course work. Desings and animations inspired by Jonas Schmedtmann (Advanced CSS and SASS: Udemy.com).
+              </p>
+          </div>
+        </div>
+
+
+      </footer>
+
 
 
     </body>
 </html>
+
+
+
+<!-- 2. Custom grid with floats - exercise
+Since this is a layout grid, the scss for it will be
+kept in the layout folder -> _grid.scss and also import it to main.scss. Basically we now have a pre-defined grid ready to use. -->
+
+      <!-- <section class="grid-test">
+
+        <div class="row">
+          <div class="col-1-of-2">
+              Col 1 of 2
+          </div>
+          <div class="col-1-of-2">
+              Col 1 of 2
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-1-of-3">
+              Col 1 of 3
+          </div>
+
+          <div class="col-1-of-3">
+              Col 1 of 3
+          </div>
+
+          <div class="col-1-of-3">
+              Col 1 of 3
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-1-of-3">
+              Col 1 of 3
+          </div>
+
+          <div class="col-2-of-3">
+              Col 2 of 3
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-1-of-4">
+              Col 1 of 4
+          </div>
+
+          <div class="col-1-of-4">
+              Col 1 of 4
+          </div>
+
+          <div class="col-1-of-4">
+              Col 1 of 4
+          </div>
+
+          <div class="col-1-of-4">
+              Col 1 of 4
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-1-of-4">
+              Col 1 of 4
+          </div>
+
+          <div class="col-1-of-4">
+              Col 1 of 4
+          </div>
+
+          <div class="col-2-of-4">
+              Col 2 of 4
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-1-of-4">
+              Col 1 of 4
+          </div>
+
+          <div class="col-3-of-4">
+              Col 3 of 4
+          </div>
+        </div>
+
+      </section> -->

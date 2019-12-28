@@ -12,86 +12,429 @@ Ligth green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 */
-
-/* Performing a basic reset using a universal selector *. To select each and
-every element on the page and apply these declarations to it */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  /* changes the box model so that borders or paddings are not added to the
-  total w or h we specify */
-  box-sizing: border-box;
-}
+  box-sizing: inherit; }
 
+html {
+  font-size: 62.5%; }
 
-/* we set general font properties in the body element because these are usually
-inherited. */
+body {
+  box-sizing: border-box; }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(1.5rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.7;
   color: #777;
-  padding: 30px; /*apply 30px padding for entire body, for better readability*/
-}
-
-.header {
-  height: 95vh; /*at every point, the height of this element to be 95% of
-  viewport height*/
-
-  /* layer the background image, transparent gradient on top, and background
-   image at the bottom */
-  background-image:
-   linear-gradient(to right bottom, rgba(115, 0, 104, 0.8), rgba(1, 210, 142, 0.8)),
-   url('../img/my_website_images/drops_hero.jpg');
-
-  background-size: cover;
-   /*Whatever the width of the viewport, allways try
-   fit 100% of image width in the box.*/
-
-  background-position: center;
-  /*ensure top doesnt get cropped with zoom*/
-  position: relative; /*this is to enable absolute positioning of child logo-box*/
-}
-
-.logo-box {
-  position: absolute; /*we position this using absolute by refering to parent element - header*/
-  top: 40px;
-  left: 40px;
-}
-
-.logo {
-  height: 50px;
-  /* specify height and the width will be adjusted automatically */
-}
-
-
-.text-box {
-  position: absolute;
-  /* these two are relations to the parent: */
-  top: 40%;
-  left: 50%;
-  /*to position the element exactly in the center, a relation to element itself:*/
-  transform: translate(-50%,-50%);
-}
+  padding: 3rem; }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
+  backface-visibility: hidden;
+  /*to stop animation from flickering(shaking?) on exit*/
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 20px;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-timing-function: ease-in; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+    text-align: center;
+    margin-bottom: 6rem; }
 
-}
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  background-image: linear-gradient(to right, #01d28e, #730068);
+  -webkit-background-clip: text;
+  /*clips the background to exactly the place of text - also make text transparent.*/
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(1.5deg) skewX(1.5deg);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
 
-.heading-primary-main {
-  display: block;
-  font-size: 50px;
-  font-weight: 400;
-  letter-spacing: 30px;
-}
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
 
-.heading-primary-sub {
-  display: block;
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: 10px;
+.paragraph {
+  font-size: 1.6rem;
+  text-align: justify; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.8rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.u-position-bottom {
+  bottom: 0;
+  margin: 0 auto; }
+
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.6rem; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(64, 42, 85, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(64, 42, 85, 0.2); }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  /* width and height are for the pseudo element as percentage of parent element */
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
+
+.btn--animated {
+  animation: moveInBottom 1.2s ease-in;
+  animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #01d28e;
+  display: inline-block;
+  text-decoration: none;
+  padding: 3px;
+  transition: all .2s;
+  background-image: linear-gradient(to right, #01d28e, #730068);
+  -webkit-background-clip: text;
+  /*clips the background to exactly the place of text - also make text transparent.*/
+  color: transparent; }
+
+.btn-text:hover {
+  text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(2px); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    outline-offset: 1rem;
+    /*offsetting outline on hover*/ }
+    .composition__photo--p1 {
+      top: 15rem;
+      left: 20%; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 4rem; }
+    .composition__photo:hover {
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 20;
+      outline: 0.8rem solid #01d28e; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.feature-box {
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  background-color: rgba(235, 235, 235, 0.8);
+  font-size: 1.5rem;
+  padding: 4rem;
   text-align: center;
-}
+  border-radius: 3px;
+  transition: transform .2s;
+  height: 65vh; }
+  .feature-box__icon {
+    width: 20%;
+    margin-bottom: 2rem; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+  .feature-box__list {
+    list-style: circle; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(115, 0, 104, 0.8), rgba(1, 210, 142, 0.8)), url("../img/my_website_images/drops_hero.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 4rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /*for centering a button below*/
+    backface-visibility: hidden; }
+  .header--small {
+    height: 20vh; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    /* always specify content property for pseudo element to appear on the page in this case "" empty string as we dont want it to contain anything*/
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-1 {
+    width: 100%; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-3 {
+    width: calc((2 * (100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-2-of-4 {
+    width: calc((2 * (100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(( 3 * (100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
+.footer {
+  background-image: linear-gradient(to right bottom, rgba(115, 0, 104, 0.8), rgba(1, 210, 142, 0.8)), url("../img/my_website_images/hills_footer.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  color: #fff; }
+  .footer__logo-box {
+    text-align: center;
+    margin-bottom: 5rem; }
+    .footer__logo-box--small {
+      text-align: center;
+      margin-bottom: 0rem; }
+  .footer__logo {
+    width: 10rem;
+    height: auto; }
+    .footer__logo--small {
+      width: 4rem;
+      height: auto; }
+  .footer__navigation {
+    text-align: left;
+    height: 100%; }
+  .footer__list {
+    list-style: none; }
+  .footer__item {
+    margin-top: 0.5rem;
+    display: inline-block; }
+    .footer__item:not(:last-child) {
+      margin-right: 1rem; }
+  .footer__link:link, .footer__link:visited {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: .3rem;
+    border: 1px solid #fff;
+    display: inline-block;
+    transition: all .2s; }
+  .footer__link:hover, .footer__link:active {
+    color: #01d28e;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg) scale(1.3); }
+  .footer__copyright {
+    width: 50%;
+    text-align: justify;
+    margin-left: auto; }
+    .footer__copyright--small {
+      font-size: 0.5rem; }
+  .footer--small {
+    padding-top: 2rem; }
+
+.navigation__checkbox {
+  display: none; }
+
+.navigation__button {
+  background-color: #fff;
+  height: 4rem;
+  width: 4rem;
+  position: fixed;
+  top: 7rem;
+  right: 7rem;
+  border-radius: 50%;
+  z-index: 200;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer; }
+
+.navigation__background {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 7.5rem;
+  right: 7.5rem;
+  background-image: radial-gradient(#730068, #01d28e);
+  z-index: 100;
+  transition: transform .4s; }
+
+.navigation__nav {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 150;
+  opacity: 0;
+  width: 0;
+  transition: all .3s; }
+
+.navigation__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  width: 100%; }
+
+.navigation__item {
+  padding: 1rem; }
+
+.navigation__link:link, .navigation__link:visited {
+  display: inline-block;
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(110deg, transparent 0%, transparent 50%, #fff 50%);
+  background-size: 220%;
+  transition: all .4s; }
+
+.navigation__link:hover, .navigation__link:active {
+  background-position: 100%;
+  color: #730068;
+  transform: translateX(1rem); }
+
+.navigation__checkbox:checked ~ .navigation__background {
+  transform: scale(100); }
+
+.navigation__checkbox:checked ~ .navigation__nav {
+  opacity: 1;
+  width: 100%; }
+
+.navigation__icon {
+  position: relative;
+  margin-top: 2rem; }
+  .navigation__icon, .navigation__icon::before, .navigation__icon::after {
+    width: 2rem;
+    height: 2px;
+    background-color: #777;
+    display: inline-block; }
+  .navigation__icon::before, .navigation__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .2s; }
+  .navigation__icon::before {
+    top: -.8rem; }
+  .navigation__icon::after {
+    top: .8rem; }
+
+.navigation__button:hover .navigation__icon::before {
+  top: -1rem; }
+
+.navigation__button:hover .navigation__icon::after {
+  top: 1rem; }
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon {
+  background-color: transparent; }
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+  top: 0;
+  transform: rotate(135deg); }
+
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+  top: 0;
+  transform: rotate(-135deg); }
+
+.section-about {
+  background-color: #f7f7f7;
+  padding: 10rem 0; }
+
+.section-features {
+  background-color: #f7f7f7;
+  padding: 10rem 0; }
+
+.section-my-story {
+  background-color: #f7f7f7;
+  padding: 5rem 0; }

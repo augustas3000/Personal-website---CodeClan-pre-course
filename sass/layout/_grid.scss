@@ -1,0 +1,72 @@
+.row {
+  max-width: $grid-width; //1.
+  margin: 0 auto; //2.
+
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  } //4.
+
+  @include clearfix //5
+
+
+  [class^="col-"] {
+
+    float:left;
+      // this will float all columns and so the parent rows will collapse -
+      // height set to 0, we fix this with @clearfix mixin.
+
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+      // all to have right margin (horizontal gutter) but the last child, of
+      // each row parent. this ommits right margin on the last element in rows.
+    }
+
+  } //7.
+
+  .col-1-of-1 {
+    width: 100%;
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+    // sass enables calc funtion to work with multiple units - big advantage!
+    // mainly because sass takes place at pre-compile stage, ultimately converting to css.
+  }
+
+  .col-1-of-3 {
+    width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+  }
+
+  .col-2-of-3 {
+    width: calc((2 * (100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+  }
+
+  .col-2-of-4 {
+    width: calc((2 * (100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+  }
+
+  .col-3-of-4 {
+    width: calc(( 3 * (100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
+  }
+// the grid can be adjusted to 12 columns total if needed.
+} //9
+
+//1.we already defined 1rem as 10px in _base.scss, html - font size, so we get 1140px standard.
+// 1. intead of just width, we should use max-width, which means that, if we had enough space in the viewport,
+// then we will have the width we specified, but if the viewport is smaller, then the element will fill 100%
+// of its space
+// 2.Center block element inside of another block element.
+// 3.To remove margin from the bottom of last row element, we can use &:last-child {margin-bottom:0}
+// 3.Or we can use &:not() pseudoselector, liek that.. &:not(:last-child). THIS selects everything except
+//the last child. SO...
+//4. we set margin-bottom property for all row elements except the last child of section parent?
+//5.clearfix mixin is used to preserve the element height once it's children are floated sss
+//basically .row::after {content:""; display:table; clear:both;}, this is also nested to that this is applied
+//to each row class.
+//7. This is the attribute selector, allowing one to select ^ all attributes that start with specified characters, or that * contain specified characters, or $ end with specified characters. In this case, we want to select all columns, so all that have an attribute class and it starts with "col-", this is gonna save us a lot of repetition.
+//8.Logical and straightforward calculations to determine column width, notice how variable increase maintainability, and organisation of code.
+//9.With all of this we already have our grid system styling in place, and we are ready to use it.

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700,900" rel="stylesheet">
+        <!-- https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900  original fonts-->
+
+        <!-- Look into icon fonts -->
+        <link rel="stylesheet" href="css/icon-font.css">
+        <link rel="stylesheet" href="css/style.css">
+        <!-- look into editing the icon for better looks -->
+        <link rel="shortcut icon" type="image/png" href="img/my_website_images/iconmonstr-tree-16-240.png">
+
+        <title>More About AJ</title>
+
+        <script>
+          function closeNav() {
+            document.getElementById("navi-toggle").checked = false;
+          }
+        </script>
+    </head>
+
+
+    <body>
+
+
+      <div class="navigation">
+
+            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+        <!-- need id attrib we will need to connect this to the label, first ingredient for checkbox hack.  as we hit the label - checkbox will be checked.-->
+            <label for="navi-toggle" class="navigation__button">
+              <span class="navigation__icon">&nbsp;</span>
+            </label>
+
+
+            <!-- need background so on top of it we can put navigation itself. &nbsp; is for whitespace. -->
+            <div class="navigation__background">&nbsp;</div>
+
+            <nav class="navigation__nav">
+          <!-- container for navigation element - unordered list, so we can later on center it vert + hariz.
+          href points to destinations, onclick calls the function to close nav pane once a user clicks on a link. -->
+              <ul class="navigation__list">
+                <li class="navigation__item"><a href="#about-btn-destination" class="navigation__link" onclick="closeNav()">About Me</a></li>
+
+                <li class="navigation__item"><a href="#specialise-btn-destination" class="navigation__link" onclick="closeNav()">Where will I specialise</a></li>
+
+                <li class="navigation__item"><a href="learn_more.html#" class="navigation__link" onclick="closeNav()">My Story</a></li>
+
+                <li class="navigation__item"><a href="#" class="navigation__link" onclick="closeNav()">Contact</a></li>
+
+              </ul>
+        </nav>
+
+        <header class="header header--small">
+          <div class="header__logo-box">
+            <!-- first a div, then image inside the div. Since image is an inline
+             element so it is better practice to first have a small container to store it
+             and adjust it's positioning within the container. -->
+              <img src="img/my_website_images/iconmonstr-tree-white-16-240.png" alt="logo" class="header__logo">
+          </div>
+        </header>
+
+        <main>
+
+          <section class="section-my-story">
+
+            <div class="u-center-text u-margin-bottom-small">
+              <h2 class="heading-secondary">
+                My story
+              </h2>
+            </div>
+
+            <div class="row">
+              <div class="col-1-of-1">
+                <p class="paragraph">
+                  My name is Augustas Juskevicius. Originally from Lithuania, I came to Scotland in 2010. The goal at that time was to enroll at BSc Forestry programme at the University of Aberdeen. Forestry was my first choice because I grew up in the greenest city of Lithuania, and also had a strong interest in the planning and management of natural resources, particularly forests.
+                </p>
+                <p class="paragraph">
+                  I entered the programme with predominant focus on biological sciences, plantation management, soil science and ecology. I enjoyed and had good success in these fields, but also realised my aptitude for math, statistics, and geographic information science. A good proof of this was my performance in Statistics for Biological Sciences course where I scored the highest in the School of Biological Sciences class of 2012-13.
+                </p>
+                <p class="paragraph">
+                  In 2014, as part of my student placement, I liaised with the UK's largest tree nursery to conduct
+                  a research project in lare-scale production of trees for later use in aforestation and forest restocking schemes. I then proceeded with the final year of my studies and achieved a First Class Honours degree along with with the Institute of Chartered Foresters student award for top of the class performance in 2015.
+                </p>
+                <p class="paragraph">
+                  I was first employed as a trainee forester by Forestry Commission Scotland(recently renamed to Scottish Forestry) and then proceeded onto working for one of the UK's largest forestry management and investment companies. Throughout three years of being a forester, I grew to appreciate how information technologies contribute to forestry fields such as financial and operational planning, in-contract communication, contingency planning and health and safety.
+                </p>
+
+                <p class="paragraph">
+                  Forestry being a data-driven business, I increasingly found myself trying to develop Excel tools to add more efficiency to my daily duties. I also became an avid user of GIS(geographic information systems) commonly utilised in forestry planning, trying to develop tools to automate standard workflows, and venturing into the concepts of spatial geodatabases, web-GIS, and mobile GIS. Naturally, Python, SQL, and Visual Basic became my new friends.
+                </p>
+
+                <p class="paragraph">
+                  The more I experimented with code, the more my brain liked the feel of it. However being a manager, there were limitations in how much time and energy I can dedicate to programming, especially on the basis that I was part of the busiest team company-wide, tasked with delivering a 4 million trees restocking and new planting programme across more than 800 hectares in the South-West Scotland. If I was to fully immerse myself in the world of programming, the choice had to be made. A pause for management and go-ahead for programming?
+                </p>
+
+                <p class="paragraph">
+                  So here I am - another recruit to CodeClan's army,   ready to take coding seriously and put my brains to the test. Will I need to open a new bank account for my Red-Bull expenses only? We shall see... ;)
+                </p>
+
+              </div>
+            </div>
+
+          </section>
+        </main>
+
+
+        <footer class="footer footer--small">
+          <div class="footer__logo-box footer__logo-box--small ">
+            <img src="img/my_website_images/iconmonstr-tree-white-16-240.png" alt="logo" class="footer__logo footer__logo--small ">
+          </div>
+
+
+          <div class="row">
+            <div class="col-1-of-2">
+              <div class="footer__navigation">
+                <ul class="footer__list">
+                  <li class="footer__item"><a href="index.html#about-btn-destination" class="footer__link">About me</a></li>
+
+                  <li class="footer__item"><a href="index.html#specialise-btn-destination" class="footer__link">Where will I specialise</a></li>
+                  <!-- <li class="footer__item"><a href="" class="footer__link">Careers</a></li> -->
+                  <li class="footer__item"><a href="" class="footer__link">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+            <div class="col-1-of-2">
+                <p class="footer__copyright footer__copyright--small">
+                   A demo website built by <a href="">Augustas J</a> as part of CodeClan pre-course work. Desings and animations inspired by Jonas Schmedtmann (Advanced CSS and SASS: Udemy.com).
+                </p>
+            </div>
+          </div>
+
+
+        </footer>
+
+   </body>
+</html>

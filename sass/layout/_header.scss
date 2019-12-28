@@ -1,0 +1,45 @@
+.header {
+  // at every point, the height of this element to be 95% of
+  // viewport height
+  // layer the background image, transparent gradient on top, and background
+  // image at the bottom
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/my_website_images/drops_hero.jpg');
+  background-size: cover;
+   // Whatever the width of the viewport, allways try
+   // fit 100% of image widtııh in the box.
+  background-position: center;
+  // ensure top doesnt get cropped with zoom
+  position: relative;
+  // this is to enable absolute positioning of child logo-box
+
+
+  &__logo-box {
+    position: absolute;
+    // we position this using absolute by refering to parent element - header
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 4rem;
+    // specify height and the width will be adjusted automatically
+  }
+
+  &__text-box {
+    position: absolute;
+    // these two are relations to the parent:
+    top: 40%;
+    left: 50%;
+    // to position the element exactly in the center, a relation to element itself:
+    transform: translate(-50%,-50%);
+    text-align: center; /*for centering a button below*/
+    backface-visibility: hidden;
+  }
+
+// modifier for small header on learn_more.html
+  &--small {
+      height: 20vh;
+  }
+
+}

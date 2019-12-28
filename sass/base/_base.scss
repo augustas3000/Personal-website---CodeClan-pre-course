@@ -1,0 +1,29 @@
+
+// Performing a basic reset using a universal selector *. To select each and
+// every element on the page and apply these declarations to it
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+// inherits border-box setting from body, this changes the box model so that borders or paddings are not added to the
+// total w or h we specify
+  box-sizing: inherit;
+}
+
+// setting the root font size to achieve better scalability
+html {
+  font-size: 62.5%;
+  // good practice to use % instead of px
+  // as px prevents user from ability to resize
+  // fonts through the browser. % in this case
+  // would be that of value browser give by default
+  // which is 16px for font size, so we want 10px initial value, which is 62.5% of 16px
+
+}
+
+
+body {
+  box-sizing: border-box;
+}

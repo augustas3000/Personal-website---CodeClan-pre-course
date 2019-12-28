@@ -1,0 +1,23 @@
+// scss variables for maintainability
+
+// COLOR
+$color: #01d28e;
+$color-primary-light: #730068;
+$color-primary-dark: #01d28e;
+$color-dark: #730068;
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-dark-purple: #402a55;
+$color-grey-light-1: #f7f7f7;
+$color-black: black;
+
+//GRID
+// this allows automatic modification of column and row gaps in the grid:
+$grid-width: 114rem; //standard 1140px?
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
+$gutter-horizontal-navigation: 1rem;
+
+
+//FONT
+$default-font-size: 1.6rem;

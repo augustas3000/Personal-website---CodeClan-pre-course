@@ -1,0 +1,17 @@
+@mixin clearfix {
+  &::after {
+    content: ""; /* always specify content property for pseudo element to appear on the page in this case "" empty string as we dont want it to contain anything*/
+    display: table;
+    clear: both;
+  }
+}
+
+//5.clearfix mixin is used to preserve the element height once it's children are floated (in this case columns of parent - row)
+//basically .row::after {content:""; display:table; clear:both;}, this is also nested to that this is applied
+//to each row class..
+
+@mixin gradient-text-color {
+  background-image: linear-gradient(to right, $color-primary-dark, $color-primary-light);
+  -webkit-background-clip: text; /*clips the background to exactly the place of text - also make text transparent.*/
+  color: transparent;
+}

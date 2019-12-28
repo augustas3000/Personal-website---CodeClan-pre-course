@@ -1,0 +1,22 @@
+{
+  "name": "my_website_pre_course",
+  "version": "1.0.0",
+  "description": "A simple website about myself. Code clan pre-course week 3 - g17",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/augustas3000/my_website_pre_course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/augustas3000/my_website_pre_course/issues"
+  },
+  "homepage": "https://github.com/augustas3000/my_website_pre_course#readme",
+  "dependencies": {
+    "node-sass": "^4.13.0"
+  }
+}

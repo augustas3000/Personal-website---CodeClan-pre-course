@@ -1,0 +1,67 @@
+.composition {
+  position: relative;
+
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+    border-radius: 2px;
+    position: absolute;
+    // below is to set same z index for all photos so
+    // when we hover on any of these, we can increase z index and
+    // bring up the foto.
+    z-index: 10;
+    // below is for animation effects(all) to happen in 0.2s
+    transition: all .2s;
+    outline-offset: 1rem; /*offsetting outline on hover*/
+
+    &--p1 {
+      top: 15rem;
+      left: 20%;
+
+     }
+
+    &--p2 {
+      right: 0;
+      top: 4rem;
+    }
+
+    &--p3 {
+
+    }
+
+    &:hover {
+      transform: scale(1.05) translateY(-.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+      z-index: 20;
+      outline: 0.8rem solid $color-primary-dark;
+    }
+
+  }
+
+// when we hover on composition  element, then select
+// its children which are not hovered on..
+  &:hover &__photo:not(:hover) {
+    transform: scale(.95);
+  }
+}
+
+
+
+
+
+  //   &:hover {
+  //     outline: 1.5rem solid $color-primary;
+  //     transform: scale(1.05) translateY(-0.5rem);
+  //     box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+  //     z-index: 20;
+  //   }
+  // }
+  //
+  // &:hover &__photo:not(:hover) {
+  //   transform: scale(.95);
+  // }
+
+
+// we will create a composition component for storing three img each with different modifier class: shorcut in emmet:
+// (.composition>img.composition__photo.composition__photop1 and tab. photos to be positioned using absolute positioning

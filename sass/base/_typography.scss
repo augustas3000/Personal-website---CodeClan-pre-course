@@ -1,0 +1,78 @@
+
+// we set general font properties in the body element because these are usually
+// inherited.
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  // font-size: 1.6rem;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 3rem;
+  // apply 30px padding for entire body, for better readability
+}
+
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /*to stop animation from flickering(shaking?) on exit*/
+  margin-bottom: 6rem;
+
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 20px;
+
+
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+}
+
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: inline-block;
+  @include gradient-text-color;
+  letter-spacing: 2px;
+  transition: all .2s;
+
+  &:hover {
+    transform: skewY(1.5deg) skewX(1.5deg);
+    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  }
+}
+
+// wee need a margin beneath heading secondary - however just adding this
+// property to .heading-secondary would not be practical - we may need to re use it in the future. hence, another utility class? - same with all headings.
+
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+}
+
+.paragraph {
+  font-size: 1.6rem;
+  text-align: justify;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
